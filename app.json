@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "rn_contact_list",
+    "name": "Contact List",
+    "description": "A Contact List for listing contacts",
     "slug": "rn_contact_list",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FEF983"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,11 +23,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FEF983"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
