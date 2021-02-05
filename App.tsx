@@ -1,21 +1,24 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
 
 export default function App() {
+  const [loaded] = useFonts({
+    LeituraNews: require('./assets/fonts/LeituraNews.ttf'),
+    Poppins: require('./assets/fonts/Poppins-Regular.ttf'),
+    PoppinsMedium: require('./assets/fonts/Poppins-Medium.ttf'),
+    PoppinsSemiBold: require('./assets/fonts/Poppins-SemiBold.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
+    <View>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
