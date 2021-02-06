@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text SHOULD match snapshot 1`] = `
+<Text
+  color="#2f2f2f"
+  family="Poppins-Regular"
+  size={16}
+  style={
+    Array [
+      Object {},
+    ]
+  }
+/>
+`;
