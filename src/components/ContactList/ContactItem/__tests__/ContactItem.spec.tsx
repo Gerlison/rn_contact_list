@@ -2,22 +2,46 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 
 import ContactItem from '../ContactItem';
+import { Contact } from '../../ContactList';
+
+const mockedContact: Contact = {
+  id: '1',
+  name: 'Joao Alves',
+  number: '(99) 9 9999-9999',
+  city: 'San Francisco',
+};
 
 describe('ContactItem', () => {
   it('SHOULD renders correctly', () => {
-    render(<ContactItem onEdit={jest.fn()} onDelete={jest.fn()} />);
+    render(
+      <ContactItem
+        contact={mockedContact}
+        onEdit={jest.fn()}
+        onDelete={jest.fn()}
+      />,
+    );
   });
 
   it('SHOULD match snapshot', () => {
-    const sut = render(<ContactItem onEdit={jest.fn()} onDelete={jest.fn()} />);
-    // expect(sut).toMatchSnapshot()
+    const sut = render(
+      <ContactItem
+        contact={mockedContact}
+        onEdit={jest.fn()}
+        onDelete={jest.fn()}
+      />,
+    );
+    expect(sut).toMatchSnapshot();
   });
 
   it.each([['profile icon'], ['contact name'], ['edit icon'], ['delete icon']])(
     'SHOULD have a %s',
     (testID) => {
       const { queryByTestId } = render(
-        <ContactItem onEdit={jest.fn()} onDelete={jest.fn()} />,
+        <ContactItem
+          contact={mockedContact}
+          onEdit={jest.fn()}
+          onDelete={jest.fn()}
+        />,
       );
       const sut = queryByTestId(testID);
       expect(sut).toBeTruthy();
@@ -29,7 +53,11 @@ describe('ContactItem', () => {
     (testID) => {
       const mockFn = jest.fn();
       const { queryByTestId } = render(
-        <ContactItem onEdit={mockFn} onDelete={mockFn} />,
+        <ContactItem
+          contact={mockedContact}
+          onEdit={mockFn}
+          onDelete={mockFn}
+        />,
       );
       const sut = queryByTestId(testID);
       fireEvent.press(sut);

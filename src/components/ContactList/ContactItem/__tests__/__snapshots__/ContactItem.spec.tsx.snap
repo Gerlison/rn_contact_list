@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactItem SHOULD match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+    ]
+  }
+>
+  <Image
+    source={1}
+    style={
+      Array [
+        Object {},
+      ]
+    }
+    testID="profile icon"
+  />
+  <Text
+    color="#2f2f2f"
+    family="Poppins-Regular"
+    size={16}
+    style={
+      Array [
+        Object {},
+      ]
+    }
+    testID="contact name"
+  >
+    João Alves
+  </Text>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+    testID="edit icon"
+  >
+    <Image
+      source={1}
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    />
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+    testID="delete icon"
+  >
+    <Image
+      source={1}
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    />
+  </View>
+</View>
+`;
