@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
+
+import MainNavigation from './src/MainNavigation';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -16,9 +17,9 @@ export default function App() {
   }
 
   return (
-    <View>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <>
+      <MainNavigation />
       <StatusBar style="auto" />
-    </View>
+    </>
   );
 }
