@@ -7,8 +7,10 @@ import Text from '../../Text';
 import profileIcon from '../../../../assets/icons/profile.svg';
 import editIcon from '../../../../assets/icons/edit.svg';
 import deleteIcon from '../../../../assets/icons/delete.svg';
+import { Contact } from '../ContactList';
 
 interface Props {
+  contact: Contact;
   onEdit: () => void;
   onDelete: () => void;
 }
