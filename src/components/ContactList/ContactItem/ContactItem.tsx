@@ -15,22 +15,20 @@ interface Props {
   onDelete: () => void;
 }
 
-const ContactItem = ({ onDelete, onEdit }: Props): JSX.Element => {
-  return (
-    <S.Container>
-      <S.Image testID="profile icon" source={profileIcon} />
-      <Text testID="contact name">João Alves</Text>
+const ContactItem = ({ contact, onDelete, onEdit }: Props): JSX.Element => (
+  <S.Container testID="contact item">
+    <S.Image testID="profile icon" source={profileIcon} />
+    <Text testID="contact name">{contact.name}</Text>
 
-      <TouchableOpacity testID="edit icon" onPress={onEdit}>
-        <S.Image source={editIcon} />
-      </TouchableOpacity>
+    <TouchableOpacity testID="edit icon" onPress={onEdit}>
+      <S.Image source={editIcon} />
+    </TouchableOpacity>
 
-      <TouchableOpacity testID="delete icon" onPress={onDelete}>
-        <S.Image source={deleteIcon} />
-      </TouchableOpacity>
-    </S.Container>
-  );
-};
+    <TouchableOpacity testID="delete icon" onPress={onDelete}>
+      <S.Image source={deleteIcon} />
+    </TouchableOpacity>
+  </S.Container>
+);
 
 const S = {
   Container: styled.View`
