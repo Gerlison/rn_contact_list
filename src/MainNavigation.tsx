@@ -8,7 +8,10 @@ const Stack = createStackNavigator();
 
 const MainNavigation = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="ListScreen">
+    <Stack.Navigator
+      initialRouteName="ListScreen"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="ListScreen" component={ListScreen} />
       <Stack.Screen name="FormScreen" component={FormScreen} />
     </Stack.Navigator>
