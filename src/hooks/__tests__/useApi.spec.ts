@@ -1,15 +1,20 @@
-import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import { act } from 'react-test-renderer';
 import api from '../../services/api';
 import useApi from '../useApi';
 
 type RequestMethod = 'get' | 'post' | 'put' | 'delete';
 
+
 jest.mock('../../services/api', () => ({
-  get: jest.fn(),
-  post: jest.fn(),
-  put: jest.fn(),
-  delete: jest.fn(),
+  get: jest.fn().mockResolvedValue({ data: {} }),
+  post: jest.fn().mockResolvedValue({ data: {} }),
+  put: jest.fn().mockResolvedValue({ data: {} }),
+  delete: jest.fn().mockResolvedValue({ data: {} }),
+  cancelTokenSource: () => ({
+    cancel: jest.fn(),
+    token: [],
+  }),
 }));
 
 const mockedApi = api as jest.Mocked<typeof api>;
@@ -32,7 +37,7 @@ describe('useApi', () => {
       expect(api[method]).toHaveBeenCalledWith(
         '/url',
         { name: 'test' },
-        undefined,
+        { cancelToken: [] },
       );
     });
   });
@@ -114,7 +119,9 @@ describe('useApi', () => {
     });
 
     it('SHOULD set errorMessage to api return', async () => {
-      mockedApi.get.mockRejectedValue('some error');
+      mockedApi.get.mockRejectedValueOnce({
+        response: { data: { message: 'some error' } },
+      });
 
       const { result } = renderHook(() => useApi('get', '/url'));
       await act(async () => {

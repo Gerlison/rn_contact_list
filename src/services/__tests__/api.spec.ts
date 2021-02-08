@@ -13,6 +13,10 @@ describe('api', () => {
   );
 
   it('SHOULD have http://localhost as base URL', () => {
-    expect(api.defaults.baseURL).toBe('http://localhost');
+    expect(api.defaults.baseURL).toBe('http://localhost:3000');
+  });
+
+  it('SHOULD have cancelTokenSource property', () => {
+    expect(api.cancelTokenSource).toBeInstanceOf(Function);
   });
 });

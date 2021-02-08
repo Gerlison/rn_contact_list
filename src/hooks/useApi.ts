@@ -1,21 +1,37 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { AxiosRequestConfig, AxiosResponse, Canceler } from 'axios';
 import api from '../services/api';
 
 const useApi = <Response>(
   method: 'get' | 'post' | 'put' | 'delete',
   endpoint: string,
-  config?: AxiosRequestConfig,
+  requestConfig?: AxiosRequestConfig,
 ) => {
+  const cancelTokenRef = useRef<Canceler | null>(null);
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [result, setResult] = useState<Response | null>(null);
+
+  useEffect(() => {
+    const cancel = cancelTokenRef.current;
+    return () => cancel?.();
+  }, []);
 
   const fetch = useCallback(async (data?: any) => {
     try {
       setErrorMessage(null);
       setIsLoading(true);
 
+      cancelTokenRef.current?.();
+      const source = api.cancelTokenSource();
+      cancelTokenRef.current = source.cancel;
+      
+      const config: AxiosRequestConfig = {
+        cancelToken: source.token,
+        ...(requestConfig || {}),
+      };
+      
       let response: AxiosResponse<Response>;
       if (method === 'get' || method === 'delete')
         response = await api[method](endpoint, config);
@@ -25,7 +41,7 @@ const useApi = <Response>(
       setResult(response.data);
     } catch (e) {
       setIsLoading(false);
-      setErrorMessage(e);
+      setErrorMessage(e.response.data.message);
     }
   }, []);
 
