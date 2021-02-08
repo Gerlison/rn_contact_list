@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 
 import ContactItem from '../ContactItem';
-import { Contact } from '../../ContactList';
+import { Contact } from '../../../../types';
 
 const mockedContact: Contact = {
   id: '1',
@@ -52,14 +52,14 @@ describe('ContactItem', () => {
     'SHOULD call function on click on %s',
     (testID) => {
       const mockFn = jest.fn();
-      const { queryByTestId } = render(
+      const { getByTestId } = render(
         <ContactItem
           contact={mockedContact}
           onEdit={mockFn}
           onDelete={mockFn}
         />,
       );
-      const sut = queryByTestId(testID);
+      const sut = getByTestId(testID);
       fireEvent.press(sut);
       expect(mockFn).toHaveBeenCalled();
     },

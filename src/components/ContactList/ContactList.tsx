@@ -1,27 +1,39 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useMemo } from 'react';
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
 import ContactItem from './ContactItem';
 import Text from '../Text';
+import useGetContacts from '../../hooks/useGetContacts';
 
-export interface Contact {
-  id: string;
-  name: string;
-  number: string;
-  city: string;
-}
+import { Contact } from '../../types';
+
 
 const ContactList = (): JSX.Element => {
-  const list: Contact[] = [];
+  const {
+    fetch,
+    result: contactList,
+    isLoading,
+    errorMessage,
+  } = useGetContacts();
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
+  const ListEmptyComponent = useMemo(
+    () => <Text>Empty list. Register a new Contact</Text>,
+    [],
+  );
 
   return (
     <S.Container>
       <Text>Contacts</Text>
       <S.List
-        data={list}
+        data={contactList}
         ItemSeparatorComponent={S.Divider}
-        keyExtractor={(item) => item.id}
+        ListEmptyComponent={ListEmptyComponent}
+        keyExtractor={({  id  }) => id}
         renderItem={({ item }) => (
           <ContactItem contact={item} onEdit={() => {}} onDelete={() => {}} />
         )}
