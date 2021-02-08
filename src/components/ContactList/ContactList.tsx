@@ -4,18 +4,15 @@ import styled from 'styled-components/native';
 
 import ContactItem from './ContactItem';
 import Text from '../Text';
-import useGetContacts from '../../hooks/useGetContacts';
+import useApi from '../../hooks/useApi';
 
 import { Contact } from '../../types';
 
 
 const ContactList = (): JSX.Element => {
-  const {
-    fetch,
-    result: contactList,
-    isLoading,
-    errorMessage,
-  } = useGetContacts();
+  const { fetch, result: contactList, isLoading, errorMessage } = useApi<
+    Contact[]
+  >('get', '/contacts');
 
   useEffect(() => {
     fetch();
