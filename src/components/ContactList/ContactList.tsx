@@ -25,12 +25,12 @@ const ContactList = (): JSX.Element => {
 
   return (
     <S.Container>
-      <Text>Contacts</Text>
+      <Text variant="Poppins-Medium" color='#999FAE' size={18}>Contacts</Text>
       <S.List
         data={contactList}
         ItemSeparatorComponent={S.Divider}
         ListEmptyComponent={ListEmptyComponent}
-        keyExtractor={({  id  }) => id}
+        keyExtractor={({ id }) => id}
         renderItem={({ item }) => (
           <ContactItem contact={item} onEdit={() => {}} onDelete={() => {}} />
         )}
@@ -44,12 +44,12 @@ const S = {
     padding: 16px;
   `,
   List: styled(FlatList as new () => FlatList<Contact>)`
-    margin-top: 16px;
+    margin-top: 28px;
   `,
   Divider: styled.View`
     width: 100%;
     height: 1px;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.25);
   `,
 };
 

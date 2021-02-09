@@ -7,7 +7,11 @@ exports[`Text SHOULD match snapshot 1`] = `
   size={16}
   style={
     Array [
-      Object {},
+      Object {
+        "color": "#2f2f2f",
+        "fontFamily": "Poppins-Regular",
+        "fontSize": 16,
+      },
     ]
   }
 />

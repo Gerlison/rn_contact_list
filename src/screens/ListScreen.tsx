@@ -16,12 +16,13 @@ const ListScreen: React.FC = () => {
 export const S = {
   Container: styled.View`
     flex: 1;
+    background-color: #fff;
   `,
   Title: styled.Text`
     font-family: 'LeituraNews';
-    font-size: 28px;
+    font-size: 36px;
     align-self: center;
-    margin: 32px 0px;
+    margin: 56px 0px 24px;
   `,
 };
 

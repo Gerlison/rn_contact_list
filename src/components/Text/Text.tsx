@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { TextProps } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 type FontFamily = 'Poppins-Regular' | 'Poppins-Medium' | 'Poppins-SemiBold';
 
@@ -29,7 +29,13 @@ const Text = ({ children, variant, size, color, ...props }: Props): JSX.Element 
 );
 
 export const S = {
-  DefaultText: styled.Text<DefaultTextProps>``,
+  DefaultText: styled.Text<DefaultTextProps>`
+    ${({ family, size, color }) => css`
+      font-family: ${family};
+      font-size: ${size}px;
+      color: ${color};
+    `}
+  `,
 };
 
 export default memo(Text);
