@@ -7,84 +7,142 @@ exports[`ContactItem SHOULD match snapshot 1`] = `
       Object {
         "alignItems": "center",
         "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingBottom": 22,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 22,
       },
     ]
   }
   testID="contact item"
 >
-  <Image
-    source={1}
-    style={
-      Array [
-        Object {},
-      ]
-    }
-    testID="profile icon"
-  />
-  <Text
-    color="#2f2f2f"
-    family="Poppins-Regular"
-    size={16}
-    style={
-      Array [
-        Object {},
-      ]
-    }
-    testID="contact name"
-  >
-    Joao Alves
-  </Text>
   <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+        Object {
+          "flex": 1,
+        },
+      ]
     }
-    testID="edit icon"
   >
     <Image
+      marginRight={16}
+      resizeMode="contain"
+      size={26}
       source={1}
       style={
         Array [
-          Object {},
+          Object {
+            "height": 26,
+            "width": 26,
+          },
         ]
       }
+      testID="profile icon"
     />
+    <Text
+      color="#2f2f2f"
+      family="Poppins-Regular"
+      numberOfLines={1}
+      size={18}
+      style={
+        Array [
+          Object {
+            "color": "#2f2f2f",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 18,
+          },
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "paddingRight": 24,
+          },
+        ]
+      }
+      testID="contact name"
+    >
+      Joao Alves
+    </Text>
   </View>
   <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+      ]
     }
-    testID="delete icon"
   >
-    <Image
-      source={1}
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {},
-        ]
+        Object {
+          "opacity": 1,
+        }
       }
-    />
+      testID="edit icon"
+    >
+      <Image
+        marginRight={24}
+        resizeMode="contain"
+        size={18}
+        source={1}
+        style={
+          Array [
+            Object {
+              "height": 18,
+              "width": 18,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="delete icon"
+    >
+      <Image
+        resizeMode="contain"
+        size={18}
+        source={1}
+        style={
+          Array [
+            Object {
+              "height": 18,
+              "width": 18,
+            },
+          ]
+        }
+      />
+    </View>
   </View>
 </View>
 `;

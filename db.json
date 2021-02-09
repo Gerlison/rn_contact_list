@@ -5,6 +5,12 @@
       "name": "Joao Alves",
       "number": "(99) 9 9999-9999",
       "city": "San Francisco"
+    },
+    {
+      "id": "2",
+      "name": "Francisco Gerlison",
+      "number": "(99) 9 9999-9999",
+      "city": "San Francisco"
     }
   ]
 }
