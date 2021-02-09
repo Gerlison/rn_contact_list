@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import api from '../api';
 
 type RequestMethods = 'get' | 'post' | 'put' | 'delete';

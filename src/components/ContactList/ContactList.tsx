@@ -23,6 +23,8 @@ const ContactList = (): JSX.Element => {
     [],
   );
 
+  if (isLoading) return <S.Loading size="large" />;
+
   return (
     <S.Container>
       <Text variant="Poppins-Medium" color='#999FAE' size={18}>Contacts</Text>
@@ -50,6 +52,11 @@ const S = {
     width: 100%;
     height: 1px;
     background-color: rgba(0, 0, 0, 0.25);
+  `,
+  Loading: styled.ActivityIndicator`
+    flex: 1;
+    align-self: center;
+    justify-content: center;
   `,
 };
 
