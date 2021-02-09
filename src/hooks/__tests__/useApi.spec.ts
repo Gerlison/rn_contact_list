@@ -129,5 +129,17 @@ describe('useApi', () => {
       });
       expect(result.current.errorMessage).toEqual('some error');
     });
+
+    it('SHOULD set errorMessage to NetworkError message', async () => {
+      mockedApi.get.mockRejectedValueOnce({
+        message: 'some error',
+      });
+
+      const { result } = renderHook(() => useApi('get', '/url'));
+      await act(async () => {
+        await result.current.fetch();
+      });
+      expect(result.current.errorMessage).toEqual('some error');
+    });
   });
 });
