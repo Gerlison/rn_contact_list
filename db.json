@@ -12,5 +12,31 @@
       "number": "(99) 9 9999-9999",
       "city": "San Francisco"
     }
+  ],
+  "cities": [
+    "Aberdeen",
+    "Abilene",
+    "Akron",
+    "Albany",
+    "Albuquerque",
+    "Alexandria",
+    "Allentown",
+    "Amarillo",
+    "Anaheim",
+    "Anchorage",
+    "Ann Arbor",
+    "Antioch",
+    "Apple Valley",
+    "Appleton",
+    "Arlington",
+    "Arvada",
+    "Asheville",
+    "Athens",
+    "Atlanta",
+    "Atlantic City",
+    "Augusta",
+    "Aurora",
+    "Austin",
+    "Bakersfield"
   ]
 }
