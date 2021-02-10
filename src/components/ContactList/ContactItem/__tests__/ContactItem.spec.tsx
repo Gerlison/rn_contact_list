@@ -15,10 +15,6 @@ const mockedContact: Contact = {
 };
 
 describe('ContactItem', () => {
-  it('SHOULD renders correctly', () => {
-    render(<ContactItem contact={mockedContact} />);
-  });
-
   it('SHOULD match snapshot', () => {
     const sut = render(<ContactItem contact={mockedContact} />);
     expect(sut).toMatchSnapshot();

@@ -4,8 +4,8 @@ import styled from 'styled-components/native';
 
 import ContactItem from './ContactItem';
 import Text from '../Text';
-import useApi from '../../hooks/useApi';
 
+import useApi from '../../hooks/useApi';
 import { Contact } from '../../types';
 
 
@@ -27,14 +27,16 @@ const ContactList = (): JSX.Element => {
 
   return (
     <S.Container>
-      <Text variant="Poppins-Medium" color='#999FAE' size={18}>Contacts</Text>
+      <Text variant="Poppins-Medium" color="#999FAE" size={18}>
+        Contacts
+      </Text>
       <S.List
         data={contactList}
         ItemSeparatorComponent={S.Divider}
         ListEmptyComponent={ListEmptyComponent}
         keyExtractor={({ id }) => id}
         renderItem={({ item }) => (
-          <ContactItem contact={item} onEdit={() => {}} onDelete={() => {}} />
+          <ContactItem contact={item} />
         )}
       />
     </S.Container>
