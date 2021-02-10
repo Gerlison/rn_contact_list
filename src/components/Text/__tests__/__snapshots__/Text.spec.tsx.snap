@@ -14,5 +14,7 @@ exports[`Text SHOULD match snapshot 1`] = `
       },
     ]
   }
-/>
+>
+  foo
+</Text>
 `;

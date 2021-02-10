@@ -6,12 +6,8 @@ import 'jest-styled-components/native';
 import Text, { Props as TextProps } from '../Text';
 
 describe('Text', () => {
-  it('SHOULD renders correctly', () => {
-    render(<Text />);
-  });
-
   it('SHOULD match snapshot', () => {
-    const sut = render(<Text />).toJSON();
+    const sut = render(<Text>foo</Text>).toJSON();
     expect(sut).toMatchSnapshot();
   });
 
@@ -34,8 +30,8 @@ describe('Text', () => {
         color: '#F0F0F0',
       },
     ],
-  ])('SHOULD match %s style', (_, style) => {
-    const sut = render(<Text {...style} />).toJSON();
-    expect(sut).toHaveStyleRule('%i', style['%i']);
+  ])('SHOULD match %s style', (_, props) => {
+    const sut = render(<Text {...props}>foo</Text>).toJSON();
+    expect(sut).toHaveStyleRule('%s', props['%s']);
   });
 });

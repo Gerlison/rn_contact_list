@@ -14,7 +14,7 @@ export interface Props extends TextProps {
   variant?: FontFamily;
   size?: number;
   color?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Text = ({ children, variant, size, color, ...props }: Props): JSX.Element => (
