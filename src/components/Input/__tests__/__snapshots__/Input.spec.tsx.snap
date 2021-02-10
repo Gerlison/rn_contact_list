@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input SHOULD match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderColor": "#aeaeae",
+        "borderRadius": 20,
+        "borderWidth": 1,
+        "marginBottom": 24,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChange={[MockFunction]}
+    placeholderTextColor="rgba(0,0,0,0.5)"
+    rejectResponderTermination={true}
+    style={
+      Array [
+        Object {
+          "fontFamily": "Poppins-Medium",
+          "fontSize": 14,
+          "paddingBottom": 20,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 20,
+        },
+      ]
+    }
+    underlineColorAndroid="transparent"
+    value="test"
+  />
+</View>
+`;
