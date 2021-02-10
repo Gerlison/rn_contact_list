@@ -1,7 +1,10 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react-native';
+import { useNavigation } from '@react-navigation/native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 
 import ContactItem from '../ContactItem';
+import api from '../../../../services/api';
+
 import { Contact } from '../../../../types';
 
 const mockedContact: Contact = {
@@ -13,55 +16,39 @@ const mockedContact: Contact = {
 
 describe('ContactItem', () => {
   it('SHOULD renders correctly', () => {
-    render(
-      <ContactItem
-        contact={mockedContact}
-        onEdit={jest.fn()}
-        onDelete={jest.fn()}
-      />,
-    );
+    render(<ContactItem contact={mockedContact} />);
   });
 
   it('SHOULD match snapshot', () => {
-    const sut = render(
-      <ContactItem
-        contact={mockedContact}
-        onEdit={jest.fn()}
-        onDelete={jest.fn()}
-      />,
-    );
+    const sut = render(<ContactItem contact={mockedContact} />);
     expect(sut).toMatchSnapshot();
   });
 
   it.each([['profile icon'], ['contact name'], ['edit icon'], ['delete icon']])(
     'SHOULD have a %s',
     (testID) => {
-      const { queryByTestId } = render(
-        <ContactItem
-          contact={mockedContact}
-          onEdit={jest.fn()}
-          onDelete={jest.fn()}
-        />,
-      );
+      const { queryByTestId } = render(<ContactItem contact={mockedContact} />);
       const sut = queryByTestId(testID);
       expect(sut).toBeTruthy();
     },
   );
 
-  it.each([['edit icon'], ['delete icon']])(
-    'SHOULD call function on click on %s',
-    (testID) => {
-      const mockFn = jest.fn();
-      const { getByTestId } = render(
-        <ContactItem
-          contact={mockedContact}
-          onEdit={mockFn}
-          onDelete={mockFn}
-        />,
-      );
-      const sut = getByTestId(testID);
-      fireEvent.press(sut);
-      expect(mockFn).toHaveBeenCalled();
-    },
-  );
+  it('SHOULD call function on click on edit icon', () => {
+    const { getByTestId } = render(<ContactItem contact={mockedContact} />);
+    const sut = getByTestId('edit icon');
+    fireEvent.press(sut);
+    expect(useNavigation().navigate).toHaveBeenCalledWith('FormScreen', {
+      contactToEdit: mockedContact,
+    });
+  });
+
+  it('SHOULD call function on click on delete icon', async () => {
+    api.delete = jest.fn().mockResolvedValue({ data: {} });
+    const { getByTestId } = render(<ContactItem contact={mockedContact} />);
+    const sut = getByTestId('delete icon');
+    fireEvent.press(sut);
+    await waitFor(() =>
+      expect(api.delete).toHaveBeenCalledWith('/contact/1', expect.anything()),
+    );
+  });
 });

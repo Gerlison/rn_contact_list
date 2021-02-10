@@ -1,41 +1,64 @@
-import React, { memo } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import React, { memo, useCallback } from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import Text from '../../Text';
 
 import { Contact } from '../../../types';
 
+import { RootStackParams } from '../../../MainNavigation';
+
 import icProfile from '../../../../assets/icons/icProfile.png';
 import icEdit from '../../../../assets/icons/icEdit.png';
 import icDelete from '../../../../assets/icons/icDelete.png';
+import useApi from '../../../hooks/useApi';
 
 interface Props {
   contact: Contact;
-  onEdit: () => void;
-  onDelete: () => void;
 }
 
-const ContactItem = ({ contact, onDelete, onEdit }: Props): JSX.Element => (
-  <S.Container testID="contact item">
-    <S.Row style={{ flex: 1 }}>
-      <S.Image testID='profile icon' marginRight={16} size={26} source={icProfile} />
-      <S.Text testID='contact name' numberOfLines={1} size={18}>
-            {contact.name}
-      </S.Text>
-    </S.Row>
+const ContactItem = ({ contact }: Props): JSX.Element => {
+  const { navigate } = useNavigation<
+    StackNavigationProp<RootStackParams, 'ListScreen'>
+  >();
 
-    <S.Row>
-      <TouchableOpacity testID="edit icon" onPress={onEdit}>
-        <S.Image marginRight={24} size={18} source={icEdit} />
-      </TouchableOpacity>
+  const { fetch } = useApi('delete', `/contact/${contact.id}`);
 
-      <TouchableOpacity testID="delete icon" onPress={onDelete}>
-        <S.Image size={18} source={icDelete} />
-      </TouchableOpacity>
-    </S.Row>
-  </S.Container>
-);
+  const handleDelete = useCallback(() => {
+    fetch();
+  }, [fetch]);
+
+  return (
+    <S.Container testID="contact item">
+      <S.Row style={{ flex: 1 }}>
+        <S.Image
+          testID="profile icon"
+          marginRight={16}
+          size={26}
+          source={icProfile}
+        />
+        <S.Text testID="contact name" numberOfLines={1} size={18}>
+          {contact.name}
+        </S.Text>
+      </S.Row>
+
+      <S.Row>
+        <TouchableOpacity
+          testID="edit icon"
+          onPress={() => navigate('FormScreen', { contactToEdit: contact })}
+        >
+          <S.Image marginRight={24} size={18} source={icEdit} />
+        </TouchableOpacity>
+
+        <TouchableOpacity testID="delete icon" onPress={handleDelete}>
+          <S.Image size={18} source={icDelete} />
+        </TouchableOpacity>
+      </S.Row>
+    </S.Container>
+  );
+};
 
 const S = {
   Container: styled.View`

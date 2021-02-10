@@ -47,7 +47,7 @@ const useApi = <Response>(
         setResult(response.data);
       } catch (e) {
         setIsLoading(false);
-        if (e.response) return setErrorMessage(e.response.data.message);
+        if (e?.response) return setErrorMessage(e.response.data.message);
         return setErrorMessage(e.message);
       }
     },
