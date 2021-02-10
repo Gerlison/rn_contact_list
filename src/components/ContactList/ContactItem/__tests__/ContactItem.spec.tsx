@@ -48,7 +48,7 @@ describe('ContactItem', () => {
     const sut = getByTestId('delete icon');
     fireEvent.press(sut);
     await waitFor(() =>
-      expect(api.delete).toHaveBeenCalledWith('/contact/1', expect.anything()),
+      expect(api.delete).toHaveBeenCalledWith('/contacts/1', expect.anything()),
     );
   });
 });

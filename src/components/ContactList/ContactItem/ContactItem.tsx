@@ -24,7 +24,7 @@ const ContactItem = ({ contact }: Props): JSX.Element => {
     StackNavigationProp<RootStackParams, 'ListScreen'>
   >();
 
-  const { fetch } = useApi('delete', `/contact/${contact.id}`);
+  const { fetch } = useApi('delete', `/contacts/${contact.id}`);
 
   const handleDelete = useCallback(() => {
     fetch();
