@@ -1,18 +1,23 @@
 import React, { memo } from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { ActivityIndicator, TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 import Text from '../Text';
 
 interface Props extends TouchableOpacityProps {
   label: string;
+  isLoading?: boolean;
 }
 
-const Button = ({ label, ...props }: Props): JSX.Element => {
+const Button = ({ label, isLoading, ...props }: Props): JSX.Element => {
   return (
     <S.Touchable {...props}>
-      <Text variant="Poppins-SemiBold" size={18} color="#fff">
-        {label.toUpperCase()}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator testID="button loading" />
+      ) : (
+        <Text variant="Poppins-SemiBold" size={18} color="#fff">
+          {label.toUpperCase()}
+        </Text>
+      )}
     </S.Touchable>
   );
 };
