@@ -41,7 +41,12 @@ const Selector = ({ items, isLoading, ...props }: Props): JSX.Element => {
 
   return (
     <>
-      <S.Backdrop testID="selector backdrop" onPress={() => setIsOpen(false)} />
+      {isOpen && (
+        <S.Backdrop
+          testID="selector backdrop"
+          onPress={() => setIsOpen(false)}
+        />
+      )}
       <S.Container>
         <S.Touchable
           testID="selector touchable"

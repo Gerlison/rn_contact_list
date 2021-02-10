@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Selector SHOULD match snapshot 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "borderColor": "#aeaeae",
+        "borderRadius": 20,
+        "borderWidth": 1,
+        "marginBottom": 24,
+        "width": "100%",
+      },
+    ]
+  }
+>
   <View
     accessible={true}
     focusable={true}
@@ -14,87 +26,51 @@ Array [
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "bottom": 0,
-        "left": 0,
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
         "opacity": 1,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
       }
     }
-    testID="selector backdrop"
-  />,
-  <View
-    style={
-      Array [
-        Object {
-          "borderColor": "#aeaeae",
-          "borderRadius": 20,
-          "borderWidth": 1,
-          "marginBottom": 24,
-          "width": "100%",
-        },
-      ]
-    }
+    testID="selector touchable"
   >
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <Text
+      color="#000"
+      family="Poppins-Medium"
+      size={14}
       style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "opacity": 1,
-          "paddingBottom": 20,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 20,
-        }
+        Array [
+          Object {
+            "color": "#000",
+            "fontFamily": "Poppins-Medium",
+            "fontSize": 14,
+          },
+        ]
       }
-      testID="selector touchable"
     >
-      <Text
-        color="#000"
-        family="Poppins-Medium"
-        size={14}
-        style={
-          Array [
-            Object {
-              "color": "#000",
-              "fontFamily": "Poppins-Medium",
-              "fontSize": 14,
-            },
-          ]
-        }
-      >
-        test
-      </Text>
-      <Image
-        isOpen={false}
-        resizeMode="contain"
-        source={1}
-        style={
-          Array [
-            Object {
-              "height": 12,
-              "transform": Array [
-                Object {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          ]
-        }
-      />
-    </View>
-  </View>,
-]
+      test
+    </Text>
+    <Image
+      isOpen={false}
+      resizeMode="contain"
+      source={1}
+      style={
+        Array [
+          Object {
+            "height": 12,
+            "transform": Array [
+              Object {
+                "rotate": "0deg",
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
 `;
