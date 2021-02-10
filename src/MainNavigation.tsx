@@ -1,10 +1,20 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import ListScreen from './screens/ListScreen';
 import FormScreen from './screens/FormScreen';
 
-const Stack = createStackNavigator();
+import { Contact } from './types';
+
+export type RootStackParams = {
+  ListScreen: undefined;
+  FormScreen: {
+    contactToEdit?: Contact;
+  };
+};
+
+const Stack = createStackNavigator<RootStackParams>();
 
 const MainNavigation = () => (
   <NavigationContainer>
