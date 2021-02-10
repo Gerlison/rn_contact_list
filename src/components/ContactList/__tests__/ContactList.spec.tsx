@@ -42,6 +42,10 @@ const mockedContacts = [
 ];
 
 describe('ContactList', () => {
+  beforeEach(() => {
+    mockedApi.get.mockResolvedValue({ data: mockedContacts });
+  });
+
   it('SHOULD renders correctly', async () => {
     await waitFor(() => render(<ContactList />));
   });
@@ -55,7 +59,6 @@ describe('ContactList', () => {
   });
 
   it('SHOULD list contacts', async () => {
-    mockedApi.get.mockResolvedValue({ data: mockedContacts });
     const component = render(<ContactList />);
     await waitFor(() => {
       const sut = component.queryAllByTestId('contact item');
