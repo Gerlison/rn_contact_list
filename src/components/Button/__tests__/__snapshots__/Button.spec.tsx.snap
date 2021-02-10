@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button SHOULD match snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#7c37a6",
+      "borderRadius": 20,
+      "marginTop": 32,
+      "opacity": 1,
+      "paddingBottom": 18,
+      "paddingLeft": 18,
+      "paddingRight": 18,
+      "paddingTop": 18,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    color="#fff"
+    family="Poppins-SemiBold"
+    size={18}
+    style={
+      Array [
+        Object {
+          "color": "#fff",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+        },
+      ]
+    }
+  >
+    FOO
+  </Text>
+</View>
+`;
