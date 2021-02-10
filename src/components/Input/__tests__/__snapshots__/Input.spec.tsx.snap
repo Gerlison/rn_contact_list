@@ -31,6 +31,7 @@ exports[`Input SHOULD match snapshot 1`] = `
         },
       ]
     }
+    testID="text input"
     underlineColorAndroid="transparent"
     value="test"
   />

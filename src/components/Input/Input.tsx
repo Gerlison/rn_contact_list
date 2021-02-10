@@ -7,7 +7,7 @@ interface Props extends TextInputProps {}
 const Input = (props: Props): JSX.Element => {
   return (
     <S.Container>
-      <S.TextInput {...props} />
+      <S.TextInput testID="text input" {...props} />
     </S.Container>
   );
 };
