@@ -1,14 +1,25 @@
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
+import ActionButton from '../components/ActionButton';
 import ContactList from '../components/ContactList';
 
+import { RootStackParams } from '../MainNavigation';
+
+import icPlus from '../../assets/icons/icPlus.png';
+
 const ListScreen: React.FC = () => {
+  const { navigate } = useNavigation<
+    StackNavigationProp<RootStackParams, 'ListScreen'>
+  >();
+
   return (
     <S.Container>
       <S.Title>collaction</S.Title>
       <ContactList />
-      {/* <ActionButton /> */}
+      <ActionButton onPress={() => navigate('FormScreen', {})} icon={icPlus} />
     </S.Container>
   );
 };
