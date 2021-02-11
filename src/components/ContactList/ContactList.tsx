@@ -48,8 +48,14 @@ const ContactList = (): JSX.Element => {
 const S = {
   Container: styled.View`
     padding: 16px;
+    padding-right: 0px;
   `,
-  List: styled(FlatList as new () => FlatList<Contact>)`
+  List: styled(FlatList as new () => FlatList<Contact>).attrs({
+    contentContainerStyle: {
+      paddingRight: 16,
+      paddingBottom: 250,
+    },
+  })`
     margin-top: 28px;
   `,
   Divider: styled.View`
