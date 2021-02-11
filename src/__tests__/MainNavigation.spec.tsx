@@ -18,4 +18,10 @@ describe('MainNavigation', () => {
   it('SHOULD renders correctly', async () => {
     await waitFor(() => render(<MainNavigation />));
   });
+
+  it('SHOULD start on ListScreen', async () => {
+    const component = await waitFor(() => render(<MainNavigation />));
+    const sut = component.queryByText('collaction');
+    expect(sut).toBeTruthy();
+  });
 });
