@@ -9,6 +9,7 @@ This is a simple Contact List made in Expo, which can be used to register, list,
     + [Cloning the repository](#cloning-the-repository)
     + [Installing dependencies](#installing-dependencies)
     + [Running](#running)
+ * [Screenshots](#screenshots)
  * [Contributing](#contributing)
     + [Create a fork](#create-a-fork)
     + [Git Flow](#git-flow)
@@ -63,6 +64,13 @@ Start your emulator, simulator or conect your real device following the document
   # to start the json-server
   yarn serve
 ```
+
+## Screenshots
+
+| | |
+|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="empty list" src="./.github/assets/empty.png">|<img width="1604" alt="list" src="./.github/assets/list.png">|
+|<img width="1604" alt="form" src="./.github/assets/form.png">|<img width="1604" alt="selector" src="./.github/assets/selector-ios.png">|
 
 
 ## Contributing
