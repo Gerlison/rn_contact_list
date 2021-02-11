@@ -13,6 +13,7 @@ exports[`Selector SHOULD match snapshot 1`] = `
       },
     ]
   }
+  testID="selector"
 >
   <View
     accessible={true}

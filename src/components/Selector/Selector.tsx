@@ -47,7 +47,7 @@ const Selector = ({ items, isLoading, ...props }: Props): JSX.Element => {
           onPress={() => setIsOpen(false)}
         />
       )}
-      <S.Container>
+      <S.Container testID="selector">
         <S.Touchable
           testID="selector touchable"
           isOpen={isOpen}
