@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionButton SHOULD match snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#7c37a6",
+      "borderRadius": 100,
+      "bottom": 32,
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": 18,
+      "paddingLeft": 18,
+      "paddingRight": 18,
+      "paddingTop": 18,
+      "position": "absolute",
+      "right": 18,
+    }
+  }
+  testID="action button"
+>
+  <Image
+    resizeMode="contain"
+    source={1}
+    style={
+      Array [
+        Object {
+          "height": 22,
+          "width": 22,
+        },
+      ]
+    }
+  />
+</View>
+`;
