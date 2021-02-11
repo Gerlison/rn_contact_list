@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo } from 'react';
+import React, { memo, useContext, useEffect, useMemo } from 'react';
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -7,16 +7,20 @@ import Text from '../Text';
 
 import useApi from '../../hooks/useApi';
 import { Contact } from '../../types';
+import { appContext } from '../../context';
 
 
 const ContactList = (): JSX.Element => {
-  const { fetch, result: contactList, isLoading, errorMessage } = useApi<
-    Contact[]
-  >('get', '/contacts');
+  const [state, dispatch] = useContext(appContext);
+  const { fetch, result, isLoading } = useApi<Contact[]>('get', '/contacts');
 
   useEffect(() => {
     fetch();
   }, []);
+  
+  useEffect(() => {
+    if (result) dispatch?.({ type: 'load', payload: result });
+  }, [result]);
 
   const ListEmptyComponent = useMemo(
     () => <Text>Empty list. Register a new Contact</Text>,
@@ -31,13 +35,11 @@ const ContactList = (): JSX.Element => {
         Contacts
       </Text>
       <S.List
-        data={contactList}
+        data={state?.contacts}
         ItemSeparatorComponent={S.Divider}
         ListEmptyComponent={ListEmptyComponent}
         keyExtractor={({ id }) => id}
-        renderItem={({ item }) => (
-          <ContactItem contact={item} />
-        )}
+        renderItem={({ item }) => <ContactItem contact={item} />}
       />
     </S.Container>
   );

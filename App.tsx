@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { SafeAreaView } from 'react-native';
+import styled from 'styled-components';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 
 import MainNavigation from './src/MainNavigation';
-import styled from 'styled-components';
+import { appContext, reducer } from './src/context';
+
 
 const App = (): JSX.Element => {
+  const [state, dispatch] = useReducer(reducer, { contacts: [] });
+
   const [loaded] = useFonts({
     LeituraNews: require('./assets/fonts/LeituraNews.ttf'),
     'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
@@ -22,7 +26,9 @@ const App = (): JSX.Element => {
     <>
       <S.SafeArea />
       <StatusBar style="auto" />
-      <MainNavigation />
+      <appContext.Provider value={[state, dispatch ]}>
+        <MainNavigation />
+      </appContext.Provider>
     </>
   );
 };

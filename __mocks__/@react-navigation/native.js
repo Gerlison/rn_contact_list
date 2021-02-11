@@ -17,9 +17,9 @@ const navigation = {
 
 const useNavigation = () => navigation
 let params = {}
-const useRoute = () => ({
+const useRoute = jest.fn(() => ({
   params: params,
-})
+}));
 
 module.exports = {
   ...RNN,

@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
@@ -14,12 +14,15 @@ import icProfile from '../../../../assets/icons/icProfile.png';
 import icEdit from '../../../../assets/icons/icEdit.png';
 import icDelete from '../../../../assets/icons/icDelete.png';
 import useApi from '../../../hooks/useApi';
+import { appContext } from '../../../context';
 
 interface Props {
   contact: Contact;
 }
 
 const ContactItem = ({ contact }: Props): JSX.Element => {
+  const [, dispatch] = useContext(appContext);
+
   const { navigate } = useNavigation<
     StackNavigationProp<RootStackParams, 'ListScreen'>
   >();
@@ -28,7 +31,8 @@ const ContactItem = ({ contact }: Props): JSX.Element => {
 
   const handleDelete = useCallback(() => {
     fetch();
-  }, [fetch]);
+    dispatch?.({ type: 'delete', payload: contact.id });
+  }, [fetch, contact.id]);
 
   return (
     <S.Container testID="contact item">

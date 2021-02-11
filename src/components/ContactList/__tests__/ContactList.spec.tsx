@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react-native';
 
 import ContactList from '../ContactList';
-import api from '../../../services/api';
+import { appContext } from '../../../context';
 
 jest.mock('../../../services/api', () => ({
   get: jest.fn(),
@@ -12,40 +12,36 @@ jest.mock('../../../services/api', () => ({
   }),
 }));
 
-const mockedApi = api as jest.Mocked<typeof api>;
-
-const mockedContacts = [
-  {
-    id: '1',
-    name: 'Joao Alves',
-    phone: '(99) 9 9999-9999',
-    city: 'Piquet Carneiro',
-  },
-  {
-    id: '2',
-    name: 'Joao Alves',
-    phone: '(99) 9 9999-9999',
-    city: 'Piquet Carneiro',
-  },
-  {
-    id: '3',
-    name: 'Joao Alves',
-    phone: '(99) 9 9999-9999',
-    city: 'Piquet Carneiro',
-  },
-  {
-    id: '4',
-    name: 'Joao Alves',
-    phone: '(99) 9 9999-9999',
-    city: 'Piquet Carneiro',
-  },
-];
+const mockedContext = {
+  contacts: [
+    {
+      id: '1',
+      name: 'Joao Alves',
+      number: '(99) 9 9999-9999',
+      city: 'Piquet Carneiro',
+    },
+    {
+      id: '2',
+      name: 'Joao Alves',
+      number: '(99) 9 9999-9999',
+      city: 'Piquet Carneiro',
+    },
+    {
+      id: '3',
+      name: 'Joao Alves',
+      number: '(99) 9 9999-9999',
+      city: 'Piquet Carneiro',
+    },
+    {
+      id: '4',
+      name: 'Joao Alves',
+      number: '(99) 9 9999-9999',
+      city: 'Piquet Carneiro',
+    },
+  ],
+};
 
 describe('ContactList', () => {
-  beforeEach(() => {
-    mockedApi.get.mockResolvedValue({ data: mockedContacts });
-  });
-
   it('SHOULD renders correctly', async () => {
     await waitFor(() => render(<ContactList />));
   });
@@ -59,10 +55,14 @@ describe('ContactList', () => {
   });
 
   it('SHOULD list contacts', async () => {
-    const component = render(<ContactList />);
+    const component = render(
+      <appContext.Provider value={[mockedContext, () => {}]}>
+        <ContactList />
+      </appContext.Provider>,
+    );
     await waitFor(() => {
       const sut = component.queryAllByTestId('contact item');
-      expect(sut.length).toBe(mockedContacts.length);
+      expect(sut.length).toBe(mockedContext.contacts.length);
     });
   });
 });
