@@ -19,8 +19,7 @@ const useApi = <Response>(
   const [result, setResult] = useState<Response | null>(null);
 
   useEffect(() => {
-    const cancel = cancelTokenRef.current;
-    return () => cancel?.();
+    return () => cancelTokenRef.current?.();
   }, []);
 
   const fetch: Fetch = useCallback(
